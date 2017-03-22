@@ -437,6 +437,11 @@
     <Compile Include="Models\Language\JointProbabilityRequest.cs" />
     <Compile Include="Models\Language\JointProbabilityResponse.cs" />
     <Compile Include="Models\Language\NextWordCandidate.cs" />
+    <Compile Include="Models\Language\Translator\SpeechDetails.cs" />
+    <Compile Include="Models\Language\Translator\GetLanguageResponse.cs" />
+    <Compile Include="Models\Language\Translator\TextDetails.cs" />
+    <Compile Include="Models\Language\Translator\TranslateResponse.cs" />
+    <Compile Include="Models\Language\Translator\TtsDetails.cs" />
     <Compile Include="Models\Language\WebLMModel.cs" />
     <Compile Include="Models\Language\WebLMModelResponse.cs" />
     <Compile Include="Models\Search\ICognitiveMediaSearchJsonResult.cs" />
@@ -602,7 +607,9 @@
     <Compile Include="Services\Knowledge\IAcademicSearchService.cs" />
     <Compile Include="Services\Knowledge\RecommendationsService.cs" />
     <Compile Include="Services\Knowledge\IRecommendationsService.cs" />
+    <Compile Include="Services\Language\ITranslatorService.cs" />
     <Compile Include="Services\Language\IWebLanguageModelService.cs" />
+    <Compile Include="Services\Language\TranslatorService.cs" />
     <Compile Include="Services\Language\WebLanguageModelService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />

@@ -20,6 +20,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Microsoft.ProjectOxford.Video.Contract;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.Translator;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using EvaluateResponse = Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
 using Operation = Microsoft.ProjectOxford.Video.Contract.Operation;
@@ -47,6 +48,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IWebLanguageModelService WebLanguageModelService;
         protected readonly ISpeakerIdentificationService SpeakerIdentificationService;
         protected readonly ISpeakerVerificationService SpeakerVerificationService;
+        protected readonly ITranslatorService TranslatorService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -67,7 +69,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IAcademicSearchService academicSearchService,
             IWebLanguageModelService webLanguageModelService,
             ISpeakerIdentificationService speakerIdentificationService,
-            ISpeakerVerificationService speakerVerificationService)
+            ISpeakerVerificationService speakerVerificationService,
+            ITranslatorService translatorService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -88,6 +91,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             WebLanguageModelService = webLanguageModelService;
             SpeakerIdentificationService = speakerIdentificationService;
             SpeakerVerificationService = speakerVerificationService;
+            TranslatorService = translatorService;
         }
 
         #region Giphy Moderator
@@ -1207,5 +1211,28 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Speaker Verification
+
+        #region Translator
+
+        public ActionResult Translator()
+        {
+            var result = TranslatorService.GetLanguages(new List<TranslateScopeOptions>() { TranslateScopeOptions.speech });
+
+            return View("Translator", new TranslatorResult() { Languages = result });
+        }
+
+        public ActionResult TranslatorTranslate() {
+            return Translator();
+        }
+
+        [HttpPost]
+        public ActionResult TranslatorTranslate(string from, string to, HttpPostedFileBase file) {
+
+            var result = TranslatorService.Translate(from, to, file.InputStream);
+
+            return View("Translator", new TranslatorResult() { Translation = result });
+        }
+
+        #endregion Translator
     }
 }

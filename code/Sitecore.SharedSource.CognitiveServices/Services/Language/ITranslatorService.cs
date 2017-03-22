@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Language.Translator;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
-    public interface ITranslatorRepository
+namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
+    public interface ITranslatorService
     {
-        Task<GetLanguageResponse> GetLanguagesAsync(IEnumerable<TranslateScopeOptions> scopes = null);
-        Task<TranslateResponse> TranslateAsync(
+        GetLanguageResponse GetLanguages(IEnumerable<TranslateScopeOptions> scopes = null);
+        TranslateResponse Translate(
             string from, 
             string to,
             Stream stream,

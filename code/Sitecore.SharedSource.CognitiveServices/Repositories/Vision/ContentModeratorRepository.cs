@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         protected static readonly string listUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/imagelists/";
         protected static readonly string termListUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/termlists/";
 
-        protected static readonly string moderateSessionTokenKey = "ModerateSessionTokenKey";
+        protected static readonly string reviewSessionTokenKey = "ReviewSessionTokenKey";
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -171,14 +171,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         #region Review
 
         protected string GetToken() {
-            if (Context?.Session?[moderateSessionTokenKey] != null) {
-                var sessionToken = (TokenResponse)Context.Session[moderateSessionTokenKey];
+            if (Context?.Session?[reviewSessionTokenKey] != null) {
+                var sessionToken = (TokenResponse)Context.Session[reviewSessionTokenKey];
                 if (sessionToken.Expires_On != null && sessionToken.ExpirationDate >= DateTime.Now)
                     return sessionToken.Access_Token;
             }
 
-            var token = RepositoryClient.SendTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
-            Context.Session.Add(moderateSessionTokenKey, token);
+            var token = RepositoryClient.SendReviewTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
+            Context.Session.Add(reviewSessionTokenKey, token);
 
             return token.Access_Token;
         }

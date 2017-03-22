@@ -175,6 +175,7 @@
     <Compile Include="Models\SpeakerIdentificationResult.cs" />
     <Compile Include="Models\SpeakerVerificationResult.cs" />
     <Compile Include="Models\TermListResult.cs" />
+    <Compile Include="Models\TranslatorResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WebLanguageModelResult.cs" />
     <Compile Include="Models\WorkflowResult.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Views\CognitiveLaunch\WebLanguageModel.cshtml" />
     <Content Include="Views\CognitiveLaunch\SpeakerIdentification.cshtml" />
     <Content Include="Views\CognitiveLaunch\SpeakerVerification.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Translator.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

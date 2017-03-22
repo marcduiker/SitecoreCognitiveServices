@@ -19,6 +19,8 @@ namespace Sitecore.SharedSource.CognitiveServices
         string Recommendations { get; }
         string SpeakerRecognition { get; }
         string TextAnalytics { get; }
+        string TranslateSpeech { get; }
+        string TranslateText { get; }
         string Video { get; }
         string WebLM { get; }
     }

@@ -20,6 +20,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             Logger = logger;
         }
 
+        #region Primary Requests
+
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "multipart/form-data", "POST");
@@ -156,7 +158,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public virtual TokenResponse SendTokenRequest(string privateKey, string clientId)
+        #endregion Primary Requests
+
+        #region Token Requests
+
+        public virtual TokenResponse SendReviewTokenRequest(string privateKey, string clientId)
         {
             byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");
 
@@ -179,6 +185,35 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
 
             return t;
         }
+
+        public virtual string SendTranslationTokenRequest(string apiKey) {
+
+            WebRequest request = WebRequest.Create("https://api.cognitive.microsoft.com/sts/v1.0/issueToken");
+            request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
+            request.Method = "POST";
+            request.ContentType = "application/jwt";
+            request.ContentLength = 0;
+            
+            string end = "";
+            WebResponse responseAsync = null;
+            StreamReader streamReader = null;
+            try {
+                responseAsync = request.GetResponse();
+                streamReader = new StreamReader(responseAsync.GetResponseStream());
+                end = streamReader.ReadToEnd();
+            } catch (Exception ex) {
+                Logger.Error(ex.Message, this, ex);
+            } finally {
+                streamReader?.Close();
+                responseAsync?.Close();
+            }
+
+            return end;
+        }
+
+        #endregion Token Requests
+
+        #region Helper Methods
 
         public virtual string GetImageStreamContentType(Stream stream)
         {
@@ -205,5 +240,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
 
             return sb.ToString();
         }
+
+        #endregion Helper Methods
     }
 }

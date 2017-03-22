@@ -1,0 +1,56 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.TranslatorResult
+@{
+    ViewBag.Title = "Translator";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form link-form" method="post" enctype="multipart/form-data" action="/CognitiveLaunchDemo/CognitiveLaunch/Translator">
+        <fieldset>
+            <legend>Translator</legend>
+            <div class="form-row">
+                <label>Audio File (16Khz Sample/Project Rate .wav)</label>
+                <input type="file" name="file"/>
+            </div>
+            <div>
+                <label>From Language</label>
+                <select name="from">
+                    @if (Model.Languages != null && Model.Languages.speech.Any()) {
+                        foreach (var s in Model.Languages.speech) {
+                            <option value="@s.Value.name">@s.Value.language</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label>To Language</label>
+                <select name="to">
+                    @if (Model.Languages != null && Model.Languages.speech.Any()) {
+                        foreach (var s in Model.Languages.speech) {
+                            <option value="@s.Value.name">@s.Value.language</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Translate Audio"/>
+            </div>
+            <div class="text-sample">
+                @if (Model.Translation != null)
+                {
+                    <div>
+                        <div>
+                            <label>Type: </label> @Model.Translation.type
+                        </div>
+                        <div>
+                            <label>Recognition: </label> @Model.Translation.recognition
+                        </div>        
+                        <div>
+                            <label>Translation: </label> @Model.Translation.translation
+                        </div>        
+                    </div>
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>
