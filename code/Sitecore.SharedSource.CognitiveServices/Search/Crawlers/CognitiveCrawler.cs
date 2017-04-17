@@ -31,7 +31,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.Crawlers
             IIndexable indexableItem = GetIndexable(version);
 
             this.Operations.Update((IIndexable)indexableItem, context, context.Index.Configuration);
-            this.UpdateLanguageFallbackDependentItems(context, (SitecoreIndexableItem)indexableItem, operationContext);
+            if (operationContext != null)
+            {
+                this.UpdateLanguageFallbackDependentItems(context, (SitecoreIndexableItem) indexableItem,
+                    operationContext);
+            }
         }
 
         protected override void DoAdd(IProviderUpdateContext context, SitecoreIndexableItem indexable)
