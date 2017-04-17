@@ -74,8 +74,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
             foreach (Field f in fields)
             {
-                sr.Documents.Add(new Document()
+                sr.Documents.Add(new SentimentDocument()
                 {
+                    Language = item.Language.CultureInfo.TwoLetterISOLanguageName.ToLower(),
                     Text = GetFormattedString(f.Value, 10240),
                     Id = f.DisplayName
                 });
@@ -198,8 +199,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
             foreach (var f in fields)
             {
-                sr.Documents.Add(new Document()
+                sr.Documents.Add(new SentimentDocument()
                 {
+                    Language = item.Language.CultureInfo.TwoLetterISOLanguageName.ToLower(),
                     Text = GetFormattedString(f.Value.Value, 10240),
                     Id = f.Value.DisplayName
                 });

@@ -118,8 +118,8 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeakerRecognition.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Microsoft.ProjectOxford.SpeakerRecognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Text, Version=0.3.0.29367, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.3.0.29367\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
+    <Reference Include="Microsoft.ProjectOxford.Text, Version=1.0.4.29051, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.1.0.4.29051\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Video, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
