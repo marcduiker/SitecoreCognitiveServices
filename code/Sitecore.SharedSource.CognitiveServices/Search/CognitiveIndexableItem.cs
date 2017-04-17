@@ -55,10 +55,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             SetLanguageInfo(item);
             SetLinguisticInfo(item);
             SetEntityLinking(item);
-            SetSentitment(item);
+            SetSentiment(item);
         }
 
-        private void SetSentitment(Item item)
+        private void SetSentiment(Item item)
         {
             var sentimentService = DependencyResolver.Current.GetService<ISentimentService>();
             if (sentimentService == null)
