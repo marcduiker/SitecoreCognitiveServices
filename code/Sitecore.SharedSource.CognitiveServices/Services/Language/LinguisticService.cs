@@ -22,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         public virtual POSTagsTextAnalysisResponse GetPOSTagsTextAnalysis(TextAnalysisRequest request)
         {
             try {
-                var result = LinguisticRepository.GetPOSTagsTextAnalysis(request);
+                var result = Task.Run(async () => await LinguisticRepository.GetPOSTagsTextAnalysisAsync(request)).Result;
 
                 return result;
             } catch (Exception ex) {
@@ -34,7 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 
         public virtual ConstituencyTreeTextAnalysisResponse GetConstituencyTreeTextAnalysis(TextAnalysisRequest request) {
             try {
-                var result = LinguisticRepository.GetConstituencyTreeTextAnalysis(request);
+                var result = Task.Run(async () => await LinguisticRepository.GetConstituencyTreeTextAnalysisAsync(request)).Result;
 
                 return result;
             } catch (Exception ex) {
@@ -46,7 +46,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 
         public virtual TokensTextAnalysisResponse GetTokensTextAnalysis(TextAnalysisRequest request) {
             try {
-                var result = LinguisticRepository.GetTokensTextAnalysis(request);
+                var result = Task.Run(async () => await LinguisticRepository.GetTokensTextAnalysisAsync(request)).Result;
 
                 return result;
             } catch (Exception ex) {

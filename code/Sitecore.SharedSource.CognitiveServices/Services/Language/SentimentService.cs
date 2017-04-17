@@ -25,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = SentimentRepository.GetSentiment(request);
+                var result = Task.Run(async () => await SentimentRepository.GetSentimentAsync(request)).Result;
 
                 return result;
             }
@@ -41,7 +41,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = SentimentRepository.GetKeyPhrases(request);
+                var result = Task.Run(async () => await SentimentRepository.GetKeyPhrasesAsync(request)).Result;
 
                 return result;
             }

@@ -22,8 +22,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         public virtual LanguageResponse GetLanguages(LanguageRequest request)
         {
             try {
-                var result = LanguageRepository.GetLanguages(request);
-
+                var result = Task.Run(async () => await LanguageRepository.GetLanguagesAsync(request)).Result;
+                
                 return result;
             } catch (Exception ex) {
                 Logger.Error("LanguageService.GetLanguages failed", this, ex);
