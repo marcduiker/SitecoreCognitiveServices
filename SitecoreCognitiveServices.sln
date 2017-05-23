@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{76EB23E0-57D2-452E-BDB3-CE26B9E7234A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4

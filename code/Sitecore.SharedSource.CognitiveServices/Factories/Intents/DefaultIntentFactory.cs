@@ -3,7 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
-    public class DefaultIntentFactory : IDefaultIntentFactory {
+    
+    public class DefaultIntentFactory : IIntentFactory<IDefaultIntent> {
         
         protected readonly IServiceProvider Provider;
 

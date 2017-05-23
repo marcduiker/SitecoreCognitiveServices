@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -13,11 +13,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class VersionIntent : IVersionIntent 
     {
         protected readonly ITextTranslator Translator;
+        protected readonly IApplicationSettings Settings;
+
+        public Guid ApplicationId => Settings.OleApplicationId;
 
         public string Name => "version";
 
-        public VersionIntent(ITextTranslator translator) {
+        public string Description => "Provide my version information";
+
+        public VersionIntent(
+            ITextTranslator translator,
+            IApplicationSettings settings) {
             Translator = translator;
+            Settings = settings;
         }
 
         public string Respond(QueryResult result, ItemContextParameters parameters) {

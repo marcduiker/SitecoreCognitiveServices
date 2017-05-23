@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.Bot.Builder.Luis.Models;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.Models.Ole;
@@ -14,11 +10,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class DefaultIntent : IDefaultIntent {
 
         protected readonly ITextTranslator Translator;
-        
-        public string Name => "default";
+        protected readonly IApplicationSettings Settings;
 
-        public DefaultIntent(ITextTranslator translator) {
+        public Guid ApplicationId => Settings.OleApplicationId;
+
+        public string Name => "none";
+
+        public string Description => "";
+
+        public DefaultIntent(
+            ITextTranslator translator,
+            IApplicationSettings settings) {
             Translator = translator;
+            Settings = settings;
         }
         
         public string Respond(QueryResult result, ItemContextParameters parameters) {

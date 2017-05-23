@@ -19,8 +19,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         AnalysisResult GetFullAnalysis(Stream imageStream);
         ImageType GetImageTypeAnalysis(string imageUrl);
         ImageType GetImageTypeAnalysis(Stream imageStream);
-        AnalysisResult AnalyzeImage(string url, string[] visualFeatures = null);
-        AnalysisResult AnalyzeImage(Stream imageStream, string[] visualFeatures = null);
         AnalysisResult AnalyzeImage(Stream stream, List<VisualFeature> features = null, IEnumerable<string> details = null);
         AnalysisResult AnalyzeImage(string imageUrl, List<VisualFeature> features = null, IEnumerable<string> details = null);
         AnalysisInDomainResult AnalyzeImageInDomain(string url, Model model);

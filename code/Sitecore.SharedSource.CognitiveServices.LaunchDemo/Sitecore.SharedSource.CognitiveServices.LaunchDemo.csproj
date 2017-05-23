@@ -118,9 +118,8 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeakerRecognition.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Microsoft.ProjectOxford.SpeakerRecognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Text, Version=1.0.4.29051, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.1.0.4.29051\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.ProjectOxford.Text, Version=1.0.6.35777, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.1.0.6.35777\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Video, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -298,9 +297,6 @@
     <Content Include="Views\CognitiveLaunch\Language.cshtml" />
     <Content Include="Views\CognitiveLaunch\Sentiment.cshtml" />
     <Content Include="Views\CognitiveLaunch\Link.cshtml" />
-    <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
-    <None Include="Properties\PublishProfiles\sc82rev161115.pubxml" />
-    <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Evaluate.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Screen.cshtml" />
     <Content Include="Views\CognitiveLaunch\Video.cshtml" />
@@ -313,6 +309,10 @@
     <Content Include="Views\CognitiveLaunch\WebLanguageModel.cshtml" />
     <Content Include="Views\CognitiveLaunch\SpeakerIdentification.cshtml" />
     <Content Include="Views\CognitiveLaunch\SpeakerVerification.cshtml" />
+    <None Include="Properties\PublishProfiles\sc82u0.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u1.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u2.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u3.pubxml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

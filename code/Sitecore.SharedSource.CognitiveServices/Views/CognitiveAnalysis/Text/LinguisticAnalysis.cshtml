@@ -10,7 +10,7 @@
                 <h3>
                     @l.FieldName
                 </h3>
-                @if(l.POSTagsAnalysis != null)
+                @*@if(l.POSTagsAnalysis != null)
                 {
                     <div class="linguistic-content">
                         <h4>Parts of Speech Analysis</h4>
@@ -18,11 +18,11 @@
                             @Html.Raw(l.HighlightPOSTags("span", "linguistic-entity"))
                         </div>
                     </div>
-                }
+                }*@
                 @if (l.ConstituencyTreeAnalysis != null)
                 {
                     <div class="linguistic-content">
-                        <h4>Constituency Tree Analysis</h4>
+                        @*<h4>Constituency Tree Analysis</h4>*@
                         <div class="linguistic-content-wrap">
                             @Html.Raw(l.HighlightConstituencyTree("span", "linguistic-entity"))
                         </div>

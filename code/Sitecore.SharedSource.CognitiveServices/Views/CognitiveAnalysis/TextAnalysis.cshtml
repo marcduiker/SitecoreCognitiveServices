@@ -14,30 +14,24 @@
 
 <div class="frame">
     <div class="tabbed-nav">
-        <div class="nav-btn selected" rel="links" title="Link Analysis">
-            <span>Link Analysis</span>
-        </div>
-        <div class="nav-btn" rel="phrase" title="Key Phrase Analysis">
-            <span>Key Phrase Analysis</span>
+        <div class="nav-btn selected" rel="sentiment" title="Sentiment Analysis">
+            <span>Sentiment Analysis</span>
         </div>
         <div class="nav-btn" rel="linguistic" title="Linguistic Analysis">
             <span>Linguistic Analysis</span>
         </div>
-        <div class="nav-btn" rel="sentiment" title="Sentiment Analysis">
-            <span>Sentiment Analysis</span>
+        <div class="nav-btn" rel="phrase" title="Key Phrase Analysis">
+            <span>Key Phrase Analysis</span>
+        </div>
+        <div class="nav-btn" rel="links" title="Link Analysis">
+            <span>Link Analysis</span>
         </div>
     </div>
     <div class="text-analysis-wrapper">
-        <div class="tab-content links selected">
-            @if (Model.LinkAnalysis != null)
+        <div class="tab-content sentiment selected">
+            @if (Model.SentimentAnalysis != null)
             {
-                @Html.Partial("~/Views/CognitiveAnalysis/EntityLinking/LinkAnalysis.cshtml", Model.LinkAnalysis)
-            }
-        </div>
-        <div class="tab-content phrase">
-            @if (Model.KeyPhraseAnalysis != null)
-            {
-                @Html.Partial("~/Views/CognitiveAnalysis/Text/KeyPhrases.cshtml", Model.KeyPhraseAnalysis)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/SentimentDocuments.cshtml", Model.SentimentAnalysis.Documents)
             }
         </div>
         <div class="tab-content linguistic">
@@ -46,10 +40,16 @@
                 @Html.Partial("~/Views/CognitiveAnalysis/Text/LinguisticAnalysis.cshtml", Model.LinguisticAnalysis)
             }
         </div>
-        <div class="tab-content sentiment">
-            @if (Model.SentimentAnalysis != null)
+        <div class="tab-content phrase">
+            @if (Model.KeyPhraseAnalysis != null)
             {
-                @Html.Partial("~/Views/CognitiveAnalysis/Text/SentimentDocuments.cshtml", Model.SentimentAnalysis.Documents)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/KeyPhrases.cshtml", Model.KeyPhraseAnalysis)
+            }
+        </div>
+        <div class="tab-content links">
+            @if (Model.LinkAnalysis != null)
+            {
+                @Html.Partial("~/Views/CognitiveAnalysis/EntityLinking/LinkAnalysis.cshtml", Model.LinkAnalysis)
             }
         </div>
     </div>

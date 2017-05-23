@@ -6,10 +6,16 @@
   "culture": "en-us",
   "intents": [
     {
+      "name": "About"
+    },
+    {
       "name": "Greet"
     },
     {
       "name": "Kick User"
+    },
+    {
+      "name": "Locked Item Count"
     },
     {
       "name": "Logged In Users"
@@ -19,6 +25,9 @@
     },
     {
       "name": "Publish"
+    },
+    {
+      "name": "Unlock Items"
     },
     {
       "name": "Version"
@@ -392,6 +401,101 @@
           "endPos": 41
         }
       ]
+    },
+    {
+      "text": "what functions do you have?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what are you capable of?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what kind of functions do you have?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what's available?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what can you do?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what can i do?",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what actions can you do",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what intents do you have",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "what functions do you support",
+      "intent": "About",
+      "entities": []
+    },
+    {
+      "text": "can you unlock all my content",
+      "intent": "Unlock Items",
+      "entities": []
+    },
+    {
+      "text": "unlock my locked items",
+      "intent": "Unlock Items",
+      "entities": []
+    },
+    {
+      "text": "unlock my items",
+      "intent": "Unlock Items",
+      "entities": []
+    },
+    {
+      "text": "can you unlock my items?",
+      "intent": "Unlock Items",
+      "entities": []
+    },
+    {
+      "text": "what locked items do i have?",
+      "intent": "Locked Item Count",
+      "entities": []
+    },
+    {
+      "text": "what's my locked items",
+      "intent": "Locked Item Count",
+      "entities": []
+    },
+    {
+      "text": "how many items are locked",
+      "intent": "Locked Item Count",
+      "entities": []
+    },
+    {
+      "text": "how many items do i have locked",
+      "intent": "Locked Item Count",
+      "entities": []
+    },
+    {
+      "text": "what are my locked items",
+      "intent": "Locked Item Count",
+      "entities": []
+    },
+    {
+      "text": "how many locked",
+      "intent": "Locked Item Count",
+      "entities": []
     }
   ]
 }

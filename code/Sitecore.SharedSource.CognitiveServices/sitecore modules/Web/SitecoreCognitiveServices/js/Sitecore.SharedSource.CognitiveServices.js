@@ -299,7 +299,13 @@ jQuery(document).ready(function () {
     }
 
     function GenerateActivity(query, langValue, dbValue, idValue) {
-        
+
+        var data = {
+            language: "en",
+            database: "master",
+            id: "{110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9}"
+        };
+
         var activity = {
             type: "message",
             id: GenerateGuid(),
@@ -321,11 +327,7 @@ jQuery(document).ready(function () {
             text: query,
             attachments: [],
             entities: [],
-            channelData: {
-                language: langValue,
-                database: dbValue,
-                id: idValue
-            }
+            channelData: JSON.stringify(data)
         }
 
         return activity;

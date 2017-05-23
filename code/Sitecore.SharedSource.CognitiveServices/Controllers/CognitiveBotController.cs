@@ -51,26 +51,32 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         {
             return View("OleChat", Parameters);
         }
-        
-        public ActionResult Post([FromBody]Activity activity) {
 
+        public ActionResult Post([FromBody] Activity activity)
+        {
             var s = JsonConvert.SerializeObject(activity.ChannelData);
-            var d = JsonConvert.DeserializeObject<ItemContextParameters>(s);
-            ItemContextParameters parameters = d;
+            var d = JsonConvert.DeserializeObject<List<string>>(s);
+            ItemContextParameters parameters = (d.Any())
+                ? JsonConvert.DeserializeObject<ItemContextParameters>(d[0])
+                : new ItemContextParameters();
 
-            if (activity.Type == ActivityTypes.Message) {
-                var result = LuisService.Query(AppId, activity.Text); // determine which intent to use
-                var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent); // try to find the matching intent object
-
-                var text = (intent != null) // respond with the selected intent or fallback to default
-                    ? intent.Respond(result, parameters)
-                    : IntentProvider.GetDefaultResponse(AppId);
-
-                var reply = activity.CreateReply(text, "en-US");
-                return Json(reply);
-            }
+            if (activity.Type == ActivityTypes.Message)
+                return HandleMessage(activity, parameters);
 
             return null;
+        }
+
+        public ActionResult HandleMessage(Activity activity, ItemContextParameters parameters) { 
+
+            var result = LuisService.Query(AppId, activity.Text); // determine which intent to use
+            var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent); // try to find the matching intent object
+
+            var text = (intent != null) // respond with the selected intent or fallback to default
+                ? intent.Respond(result, parameters)
+                : IntentProvider.GetDefaultResponse(AppId);
+
+            var reply = activity.CreateReply(text, "en-US");
+            return Json(reply);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.Data.Items;
@@ -11,17 +12,24 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class PublishIntent : IPublishIntent
     {
         protected readonly ITextTranslator Translator;
+        protected readonly IApplicationSettings Settings;
         protected readonly ISitecoreDataService DataService;
         protected readonly IPublishWrapper PublishWrapper;
 
+        public Guid ApplicationId => Settings.OleApplicationId;
+
         public string Name => "publish";
+
+        public string Description => "Publish content";
 
         public PublishIntent(
             ITextTranslator translator,
+            IApplicationSettings settings,
             ISitecoreDataService dataService,
             IPublishWrapper publishWrapper)
         {
             Translator = translator;
+            Settings = settings;
             DataService = dataService;
             PublishWrapper = publishWrapper;
         }

@@ -4,17 +4,17 @@ using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
     
-    public class VersionIntentFactory : IIntentFactory<IVersionIntent> {
+    public class LockedItemCountIntentFactory : IIntentFactory<ILockedItemCountIntent> {
         
         protected readonly IServiceProvider Provider;
 
-        public VersionIntentFactory(IServiceProvider provider)
+        public LockedItemCountIntentFactory(IServiceProvider provider)
         {
             Provider = provider;
         }
 
-        public virtual IVersionIntent Create() {
-            return Provider.GetService<IVersionIntent>();
+        public virtual ILockedItemCountIntent Create() {
+            return Provider.GetService<ILockedItemCountIntent>();
         }
     }
 }

@@ -1,19 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SharedSource.CognitiveServices;
 using Microsoft.SharedSource.CognitiveServices.CSV;
-using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Factories;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
+using Microsoft.SharedSource.CognitiveServices.Repositories;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using Sitecore.DependencyInjection;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Factories;
+using Sitecore.SharedSource.CognitiveServices.Repositories;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Models.Search;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
-using Microsoft.SharedSource.CognitiveServices.Repositories;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using Sitecore.SharedSource.CognitiveServices.Factories.Intents;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
@@ -40,7 +40,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
             serviceCollection.AddTransient<ITextTranslator, TextTranslator>();
-            serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
             serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
 
             //repositories
@@ -118,14 +117,23 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ILoggedInUsersIntent, LoggedInUsersIntent>();
             serviceCollection.AddTransient<IPublishIntent, PublishIntent>();
             serviceCollection.AddTransient<IVersionIntent, VersionIntent>();
+            serviceCollection.AddTransient<IAboutIntent, AboutIntent>();
+            serviceCollection.AddTransient<IUnlockItemsIntent, UnlockItemsIntent>();
+            serviceCollection.AddTransient<ILockedItemCountIntent, LockedItemCountIntent>();
 
             //intent factories
-            serviceCollection.AddTransient<IDefaultIntentFactory, DefaultIntentFactory>();
-            serviceCollection.AddTransient<IGreetIntentFactory, GreetIntentFactory>();
-            serviceCollection.AddTransient<IKickUserIntentFactory, KickUserIntentFactory>();
-            serviceCollection.AddTransient<ILoggedInUsersIntentFactory, LoggedInUsersIntentFactory>();
-            serviceCollection.AddTransient<IPublishIntentFactory, PublishIntentFactory>();
-            serviceCollection.AddTransient<IVersionIntentFactory, VersionIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, GreetIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, KickUserIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, LoggedInUsersIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, PublishIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, VersionIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, AboutIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, UnlockItemsIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, LockedItemCountIntentFactory>();
+
+            //intent provider
+            serviceCollection.AddSingleton<IIntentProvider, IntentProvider>();
 
             //search
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();

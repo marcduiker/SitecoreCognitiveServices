@@ -4,17 +4,17 @@ using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
     
-    public class VersionIntentFactory : IIntentFactory<IVersionIntent> {
+    public class UnlockItemsIntentFactory : IIntentFactory<IUnlockItemsIntent> {
         
         protected readonly IServiceProvider Provider;
 
-        public VersionIntentFactory(IServiceProvider provider)
+        public UnlockItemsIntentFactory(IServiceProvider provider)
         {
             Provider = provider;
         }
 
-        public virtual IVersionIntent Create() {
-            return Provider.GetService<IVersionIntent>();
+        public virtual IUnlockItemsIntent Create() {
+            return Provider.GetService<IUnlockItemsIntent>();
         }
     }
 }

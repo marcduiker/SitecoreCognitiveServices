@@ -51,14 +51,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         private void SetTextProperties(Item item)
         {
-            SetSentimentInfo(item);
-            SetLanguageInfo(item);
+            SetKeyPhraseInfo(item);
             SetLinguisticInfo(item);
-            SetEntityLinking(item);
-            SetSentiment(item);
+            SetEntityLinkingInfo(item);
+            SetSentitmentInfo(item);
         }
 
-        private void SetSentiment(Item item)
+        private void SetSentitmentInfo(Item item)
         {
             var sentimentService = DependencyResolver.Current.GetService<ISentimentService>();
             if (sentimentService == null)
@@ -89,7 +88,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             Sentiment = result;
         }
 
-        private void SetEntityLinking(Item item)
+        private void SetEntityLinkingInfo(Item item)
         {
             var entityLinkingService = DependencyResolver.Current.GetService<IEntityLinkingService>();
             if (entityLinkingService == null)
@@ -156,34 +155,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
             Linguistics = fieldResults;
         }
-
-        private void SetLanguageInfo(Item item)
-        {
-            var languageService = DependencyResolver.Current.GetService<ILanguageService>();
-            if (languageService == null)
-                return;
-
-            LanguageRequest lr = new LanguageRequest();
-
-            IEnumerable<Field> fields = GetTextualFields(item);
-            if (!fields.Any())
-            {
-                return;
-            }
-
-            foreach (Field f in fields)
-            {
-                lr.Documents.Add(new Document()
-                {
-                    Text = GetFormattedString(f.Value, 10240),
-                    Id = f.DisplayName
-                });
-            }
-
-            Languages = languageService.GetLanguages(lr);
-        }
-
-        private void SetSentimentInfo(Item item)
+        
+        private void SetKeyPhraseInfo(Item item)
         {
             var sentimentService = DependencyResolver.Current.GetService<ISentimentService>();
             if (sentimentService == null)
